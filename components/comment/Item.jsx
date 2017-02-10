@@ -2,7 +2,10 @@ import React from 'react'
 var CommentItem = React.createClass({
     render: function () {
         return (
-            <span>i am item!</span>
+            <div>
+                <h1>{this.props.author}</h1>
+                {this.props.children}
+            </div>
         )
     }
 })

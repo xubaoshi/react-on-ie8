@@ -1,5 +1,9 @@
 import React from 'react';
 import CommentList from './components/comment/List.jsx'
+var data = [
+  { id: 1, author: "Pete Hunt", text: "This is one comment" },
+  { id: 2, author: "Jordan Walke", text: "This is *another* comment" }
+];
 
 class App extends React.Component {
   state = {};
@@ -17,7 +21,7 @@ class App extends React.Component {
         <pre><code>
           {JSON.stringify(this.state, null, 2)}
         </code></pre>
-        <CommentList></CommentList>
+        <CommentList data={data}></CommentList>
       </div>
     );
   }
