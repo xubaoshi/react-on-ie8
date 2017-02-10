@@ -13,7 +13,7 @@ require('fetch-ie8');
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const App = require('./App');
+const App = require('./App.js');
 
 ReactDOM.render(
   <App/>,

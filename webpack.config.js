@@ -8,14 +8,14 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.js|jsx$/,
                 exclude: /node_modules/,
                 loaders: ['babel-loader'],
-            },
+            }
         ],
         postLoaders: [
             {
-                test: /\.js$/,
+                test: /\.js|jsx$/,
                 loaders: ['es3ify-loader'],
             },
         ],

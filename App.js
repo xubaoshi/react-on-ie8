@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentList from './components/comment/List.jsx'
 
 class App extends React.Component {
   state = {};
@@ -16,6 +17,7 @@ class App extends React.Component {
         <pre><code>
           {JSON.stringify(this.state, null, 2)}
         </code></pre>
+        <CommentList></CommentList>
       </div>
     );
   }
