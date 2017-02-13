@@ -13,9 +13,13 @@ require('fetch-ie8');
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const App = require('./App.js');
+const {Router} = require('react-router');
+const createHistory = require('history/lib/createHashHistory');
+const App = require('./App.jsx');
+const Routes = require('./routes.jsx')
+const history = createHistory()
 
 ReactDOM.render(
-  <App/>,
+  <Router children={Routes} history={history}></Router>,
   document.getElementById('app')
 );
