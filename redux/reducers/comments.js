@@ -27,8 +27,6 @@ export default function comments(state = initialState, action) {
                 }
             ];
         default:
-        console.log(new Date());
-        console.log(state);
         return state;
     }
 }
