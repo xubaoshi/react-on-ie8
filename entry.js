@@ -15,11 +15,21 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const {Router} = require('react-router');
 const createHistory = require('history/lib/createHashHistory');
+const { createStore } = require('redux')
+const { Provider } = require('react-redux')
+const { syncHistoryWithStore, routerReducer } = require('react-router-redux')
+
 const App = require('./App.jsx');
 const Routes = require('./routes.jsx')
-const history = createHistory()
+const configureStore = require('./store/configureStore')
 
+
+const store = configureStore()
+// const history = syncHistoryWithStore(createHistory, store)
+const history = createHistory()
 ReactDOM.render(
-  <Router children={Routes} history={history}></Router>,
+  <Provider store={store}>
+    <Router children={Routes} history={history}></Router>
+  </Provider>,
   document.getElementById('app')
 );

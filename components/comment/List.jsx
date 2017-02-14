@@ -1,21 +1,15 @@
 import React from 'react'
 import CommentItem from './Item.jsx'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+
 var CommentList = React.createClass({
-  getInitialState: function () {
-    return { 'data': [] };
-  },
-  componentWillMount: function () {
-    fetch('api/comment.json')
-      .then((res) => res.json())
-      .then((res) => {
-        console
-        this.setState({ 'data': res })
-      })
-  },
     render: function () {
+        const {comments} = this.props
         var commentNodes = ''
-        if(this.state.data &&　this.state.data.length > 0){
-            commentNodes = this.state.data.map(function (comment) {
+        if (comments && 　comments.length > 0) {
+            commentNodes = comments.map(function (comment) {
                 return (
                     <CommentItem author={comment.author} key={comment.id}>
                         {comment.text}
@@ -31,4 +25,15 @@ var CommentList = React.createClass({
     }
 })
 
-export default CommentList
+const mapStateToProps = (state, ownProps) => {
+  return {
+    comments: state.rootReducer.comments
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList)

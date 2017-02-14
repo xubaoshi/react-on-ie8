@@ -24,6 +24,7 @@
     "eventsource-polyfill": "0.9.6",
     "fetch-ie8": "1.4.0",
     "history": "^1.17.0",
+    "object-assign": "^4.0.1",
     "react": "0.14.3",
     "react-dom": "0.14.3",
     "react-redux": "^4.4.0",

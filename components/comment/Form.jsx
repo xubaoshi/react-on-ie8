@@ -1,4 +1,7 @@
 import React from 'react'
+import { addComment } from '../../actions/index'
+import { connect } from "react-redux";
+
 var CommentForm = React.createClass({
     getInitialState: function () {
         return { author: '', text: '' }
@@ -9,21 +12,20 @@ var CommentForm = React.createClass({
     handleTextChange: function (e) {
         this.setState({ text: e.target.value })
     },
-    handleSubmit: function (e) {
-        e.preventDefault();
-        var author = this.state.author.trim();
-        var text = this.state.text.trim();
-        if (!text || !author) return;
-        this.handleCommentSubmit({ author: author, text: text });
-        this.setState({ author: '', text: '' });
-    },
     handleCommentSubmit: function (newData) {
         newData.id = new Date()
         this.setState({ 'data': this.state.data })
     },
     render: function () {
+        const {handleSubmit} = this.props
+
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={e => {
+                e.preventDefault();
+                handleSubmit({ author: this.state.author, text: this.state.text });
+                this.state.author = '';
+                this.state.text = ''
+            }}>
                 <input type="text" placeholder="your name" value={this.state.author} onChange={this.handleAuthorChange} />
                 <input type="text" placeholder="say somthing" value={this.state.text} onChange={this.handleTextChange} />
                 <input type="submit" value="Post" />
@@ -32,4 +34,17 @@ var CommentForm = React.createClass({
     }
 })
 
-export default CommentForm
+const mapStateToProps = (state, ownProps) => {
+    return {
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        handleSubmit: (obj) => {
+            dispatch(addComment(obj))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)
