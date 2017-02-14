@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import CommentList from './components/comment/List.jsx'
 import CommentForm from './components/comment/Form.jsx'
 import { Link } from 'react-router'
-import * as Actions from './actions';
+import * as Actions from './redux/actions';
 
 var App = React.createClass({
   render: function () {

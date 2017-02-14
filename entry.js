@@ -21,12 +21,12 @@ const { syncHistoryWithStore, routerReducer } = require('react-router-redux')
 
 const App = require('./App.jsx');
 const Routes = require('./routes.jsx')
-const configureStore = require('./store/configureStore')
+const configureStore = require('./redux/store/configureStore')
 
 
 const store = configureStore()
-// const history = syncHistoryWithStore(createHistory, store)
-const history = createHistory()
+const history = syncHistoryWithStore(createHistory, store)
+// const history = createHistory()
 ReactDOM.render(
   <Provider store={store}>
     <Router children={Routes} history={history}></Router>
