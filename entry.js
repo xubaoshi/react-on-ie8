@@ -25,7 +25,7 @@ const configureStore = require('./redux/store/configureStore')
 
 
 const store = configureStore()
-const history = syncHistoryWithStore(createHistory(), store)
+const history = syncHistoryWithStore(createHistory({queryKey:false}), store)
 ReactDOM.render(
   <Provider store={store}>
     <Router children={Routes} history={history}></Router>
